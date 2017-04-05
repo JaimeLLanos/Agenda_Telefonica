@@ -1,35 +1,63 @@
-package ais;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package practica.ais.que.dolor.xd;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author yoel
+ */
+
+
+
 public class Contacto {
     private String nombre;
-    private int telefono;
+    private ArrayList<Numero>listaNumeros=new ArrayList<>();
 
-    public Contacto()
+    public Contacto(String nombre, Numero numero)
     {
-    this.nombre=null;
-    this.telefono=0;
+    this.nombre=nombre;
+    this.listaNumeros.add(numero);
     }
-    public Contacto(String nombre, int telefono) {
-        this.nombre = nombre;
-        this.telefono = telefono;
-    }
+    
     public void set_nombre(String nomb){        
         this.nombre=nomb.toUpperCase();
     }
-    public void set_telefono(int telf){
-        this.telefono=telf;
+    public void anadirNumero(Numero numero){
+        this.listaNumeros.add(numero);
+    }
+    
+    public ArrayList<Numero> getNumeros(){
+        return this.listaNumeros;
     }
 
     public String getNombre() {
         return this.nombre;
     }
+    
+    private String mostrarNumeros(){
+       
+        String cadena=null;
+        for(Numero numero:this.listaNumeros){
+           cadena= cadena.concat(Integer.toString(numero.getNumero()));
+        }
+        return cadena;
+                
+    }       
+    
+            
 
-    public int getTelefono() {
-        return telefono;
-    }
-    /*
+    
+    
     @Override
-    public String toString(){
-        return nombre;
+    public String toString (){
+        return this.nombre+", "+this.mostrarNumeros();
     }
-    */
+    
+    
+    
 }
