@@ -30,8 +30,12 @@ import java.util.logging.Logger;
 
 public class Agenda {
 
-    private ArrayList<Contacto> lista_contactos = new ArrayList<>();
-    private int contador_contactos = 0; // Contador de objetos creados. Variable muy importante.
+    private ArrayList<Contacto> lista_contactos;
+    //private int contador_contactos = 0; // Contador de objetos creados. Variable muy importante.
+    
+    public Agenda(){
+        lista_contactos= new ArrayList<>();   
+    }
 
     public void Consultar(String nombre) {
     	for(Contacto c: lista_contactos){
@@ -61,6 +65,7 @@ public class Agenda {
     	}
     	else{
     		lista_contactos.add(contacto);
+                this.guardar();
     	}
     }
     
