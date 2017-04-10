@@ -69,6 +69,19 @@ public class Agenda {
         }
         return contactosPatron;
     }
+    
+    public Contacto BuscarContacto(String nombre){
+    	Contacto c = null;
+    	String name;
+    	 for(Contacto contacto:this.lista_contactos){
+    		 name=contacto.getNombre();
+    		 if(name == nombre){
+    			 c = contacto;
+    		 }
+    	 }
+    	 
+    	 return c;
+    }
 
        /* for (int i = 0; i < contador_contactos; i++) {
             if (nombre.equals(this.lista_contactos[i].getNombre())) {
