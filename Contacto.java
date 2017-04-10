@@ -5,8 +5,9 @@
  */
 
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class Contacto implements Comparable<Contacto> {
+public class Contacto implements Comparable<Contacto>, Serializable {
     private String nombre;
     private ArrayList<Integer> listaNumeros = new ArrayList<>();
 
