@@ -37,12 +37,12 @@ public class Agenda {
         
             
     }
-    public void Anadir(Contacto contacto) {
-    	//El añadir tendra dos metodos. Este sera el encargado de añadir un contacto 
+    public void Anadir(Contacto contacto) throws IllegalStateException {
+    	//El aÃ±adir tendra dos metodos. Este sera el encargado de aÃ±adir un contacto 
     	// a la lista de contactos
     	if(existeContacto(contacto)){
-    		//System.out.println("No se puede añadir un contacto, porque ya existe");
-    		throw new IllegalStateException("No se puede añadir contaco que ya existe");
+    		//System.out.println("No se puede aÃ±adir un contacto, porque ya existe");
+    		throw new IllegalStateException("No se puede aÃ±adir contaco que ya existe");
     	}
     	else if (lista_contactos.contains(contacto)){
     		//System.out.println("Contacto ya existente");
@@ -132,10 +132,10 @@ public class Agenda {
                     }
                 }
                 if (encontrado) {
-                    System.out.println("¿Qué contacto quieres eliminar, introduce el número asociado?");
+                    System.out.println("Â¿QuÃ© contacto quieres eliminar, introduce el nÃºmero asociado?");
                     int eliminar_numero = Integer.parseInt(teclado.readLine());
                     eliminar_numero--;
-                    System.out.println("¿Estas seguro (S/N)?");
+                    System.out.println("Â¿Estas seguro (S/N)?");
                     String respuesta;
                     respuesta = teclado.readLine();
                     respuesta = respuesta.toUpperCase();
@@ -229,11 +229,11 @@ public class Agenda {
                     }
                 }
                 if (encontrado) {
-                    System.out.println("¿Qué contacto quieres modificar?, introduce el número:");
+                    System.out.println("Â¿QuÃ© contacto quieres modificar?, introduce el nÃºmero:");
                     int modificar_numero = Integer.parseInt(teclado.readLine());
                     System.out.println("Introduce nombre:");
                     String nombre_nuevo = teclado.readLine();
-                    System.out.println("Introduce teléfono, formato numerico:");
+                    System.out.println("Introduce telÃ©fono, formato numerico:");
                     int telefono_nuevo = Integer.parseInt(teclado.readLine());
                     this.lista_contactos[modificar_numero - 1].set_nombre(nombre_nuevo);
                     this.lista_contactos[modificar_numero - 1].set_telefono(telefono_nuevo);
@@ -272,7 +272,7 @@ public class Agenda {
                             
                         }
                         else{
-                            System.out.println("El numero no existe, desea añadirlo?(s/n) ");
+                            System.out.println("El numero no existe, desea aÃ±adirlo?(s/n) ");
                             char op = sc.next().charAt(0);
                             if((op=='S')||(op=='s'))
                                     c.anadirNumero(n);
@@ -330,6 +330,22 @@ public class Agenda {
         }
   
     }
+    
+    private void guardarConParametro(File file){
+        try{
+            //File file=new File("agenda.txt");
+            FileOutputStream fos=new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            for(Contacto c:this.lista_contactos)
+                oos.writeObject(c);
+            
+            oos.flush();
+            oos.close();
+        }
+        catch(IOException e){
+            System.out.println("ERROR: "+e.getClass()+" "+e.getMessage());
+   
+        }
                                    
 
 
