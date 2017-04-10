@@ -51,6 +51,26 @@ public class Contacto implements Comparable<Contacto> {
 	public int compareTo(Contacto o) {
 		// TODO Auto-generated method stub
 		return this.nombre.compareTo(o.nombre);
+	
+	}
+	
+	public void eliminarNumero(int numero){
+		Integer aux = 0;
+		for(Integer n : listaNumeros){
+			if(n == numero){
+				aux = n;
+			}
+		}
+		listaNumeros.remove(aux);
+	}
+	
+	public void modificarNumero(int antiguo, Integer nuevo){
+		this.eliminarNumero(antiguo);
+		this.anadirNumero(nuevo);
+	}
+	
+	public void eliminarListaNumero(){
+		this.listaNumeros = null;
 	}
     
     
