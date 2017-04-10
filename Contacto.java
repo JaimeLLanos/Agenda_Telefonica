@@ -10,7 +10,7 @@ public class Contacto implements Comparable<Contacto> {
     private String nombre;
     private ArrayList<Integer> listaNumeros = new ArrayList<>();
 
-    public Contacto(String nombre, int numero)
+    public Contacto(String nombre, Integer numero)
     {
     this.nombre=nombre;
     this.listaNumeros.add(numero);
@@ -20,7 +20,7 @@ public class Contacto implements Comparable<Contacto> {
         this.nombre=nomb.toUpperCase();
     }
     
-    public void anadirNumero(int numero){
+    public void anadirNumero(Integer numero){
         this.listaNumeros.add(numero);
     }
     
@@ -33,20 +33,23 @@ public class Contacto implements Comparable<Contacto> {
     }
     
     private String mostrarNumeros(){
-       
+        int aux;
         String cadena=null;
-        for(Integer numero:this.listaNumeros){
-           cadena= cadena.concat(Integer.toString(numero));
+        for(Integer numero : this.listaNumeros){
+        	aux = numero.intValue();
+            cadena= cadena.concat(Integer.toString(numero));
         }
         return cadena;
                 
-    }       
+    }      
     
     
     @Override
     public String toString (){
         return this.nombre+", "+this.mostrarNumeros();
-}
+    }
+
+	
     
 	public int compareTo(Contacto o) {
 		// TODO Auto-generated method stub
@@ -54,7 +57,7 @@ public class Contacto implements Comparable<Contacto> {
 	
 	}
 	
-	public void eliminarNumero(int numero){
+	public void eliminarNumero(Integer numero){
 		Integer aux = 0;
 		for(Integer n : listaNumeros){
 			if(n == numero){
@@ -64,7 +67,7 @@ public class Contacto implements Comparable<Contacto> {
 		listaNumeros.remove(aux);
 	}
 	
-	public void modificarNumero(int antiguo, Integer nuevo){
+	public void modificarNumero(Integer antiguo, Integer nuevo){
 		this.eliminarNumero(antiguo);
 		this.anadirNumero(nuevo);
 	}
