@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 
 
-public class Contacto implements Serializable{
+public class Contacto implements Serializable, Comparable<Contacto>{
     private String nombre;
     private ArrayList<Numero>listaNumeros=new ArrayList<>();
 
