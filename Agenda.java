@@ -235,6 +235,11 @@ public class Agenda implements Serializable {
         
     }
     
+    public void eliminarPorNombre(String nombre){
+    	Contacto c = this.BuscarContacto(nombre);
+    	this.Eliminar(c);
+    }
+    
 
     /*public void Modificar() {
         try {
