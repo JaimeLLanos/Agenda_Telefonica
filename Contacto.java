@@ -1,17 +1,27 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
+
 
 /**
  *
- * @author Oscar de la Cuesta - www.palentino.es
+ * @author yoel
  */
 
-import java.util.ArrayList;
-import java.io.Serializable;
 
-public class Contacto implements Comparable<Contacto>, Serializable {
+
+public class Contacto implements Serializable{
     private String nombre;
-    private ArrayList<Integer> listaNumeros = new ArrayList<>();
+    private ArrayList<Numero>listaNumeros=new ArrayList<>();
 
-    public Contacto(String nombre, Integer numero)
+    public Contacto(String nombre, Numero numero)
     {
     this.nombre=nombre;
     this.listaNumeros.add(numero);
@@ -20,12 +30,11 @@ public class Contacto implements Comparable<Contacto>, Serializable {
     public void set_nombre(String nomb){        
         this.nombre=nomb.toUpperCase();
     }
-    
-    public void anadirNumero(Integer numero){
+    public void anadirNumero(Numero numero){
         this.listaNumeros.add(numero);
     }
     
-    public ArrayList<Integer> getNumeros(){
+    public ArrayList<Numero> getNumeros(){
         return this.listaNumeros;
     }
 
@@ -34,50 +43,45 @@ public class Contacto implements Comparable<Contacto>, Serializable {
     }
     
     private String mostrarNumeros(){
-        int aux;
+       
         String cadena=null;
-        for(Integer numero : this.listaNumeros){
-        	aux = numero.intValue();
-            cadena= cadena.concat(Integer.toString(numero));
+        for(Numero numero:this.listaNumeros){
+           cadena= cadena.concat(Integer.toString(numero.getNumero()));
         }
         return cadena;
                 
-    }      
-    
+    }  
+   
     
     @Override
     public String toString (){
         return this.nombre+", "+this.mostrarNumeros();
     }
-
-	
-    
-	public int compareTo(Contacto o) {
-		// TODO Auto-generated method stub
-		return this.nombre.compareTo(o.nombre);
-	
-	}
-	
-	public void eliminarNumero(Integer numero){
-		Integer aux = 0;
-		for(Integer n : listaNumeros){
-			if(n == numero){
-				aux = n;
-			}
-		}
-		listaNumeros.remove(aux);
-	}
-	
-	public void modificarNumero(Integer antiguo, Integer nuevo){
-		this.eliminarNumero(antiguo);
-		this.anadirNumero(nuevo);
-	}
-	
-	public void eliminarListaNumero(){
-		this.listaNumeros = null;
-	}
     
     
-    
+   	public int compareTo(Contacto o) {
+   		// TODO Auto-generated method stub
+   		return this.nombre.compareTo(o.nombre);
+   	
+   	}
+   	
+   	public void eliminarNumero(Numero numero){
+   		Numero aux = null;
+   		for(Numero n : listaNumeros){
+   			if(n == numero){
+   				aux = n;
+   			}
+   		}
+   		listaNumeros.remove(aux);
+   	}
+   	
+   	public void modificarNumero(Numero antiguo, Numero nuevo){
+   		this.eliminarNumero(antiguo);
+   		this.anadirNumero(nuevo);
+   	}
+   	
+   	public void eliminarListaNumero(){
+   		this.listaNumeros = null;
+   	}
     
 }
